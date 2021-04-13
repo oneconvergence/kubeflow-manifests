@@ -35,7 +35,7 @@ resources:
 # Katib
 - ../apps/katib/upstream/installs/katib-with-kubeflow-cert-manager
 # Central Dashboard
-- ../apps/centraldashboard/upstream/overlays/istio
+#- ../apps/centraldashboard/upstream/overlays/istio
 # Admission Webhook
 - ../apps/admission-webhook/upstream/overlays/cert-manager
 # Notebook Controller
