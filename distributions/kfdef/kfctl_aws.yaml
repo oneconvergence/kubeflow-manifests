@@ -7,107 +7,138 @@ spec:
   - kustomizeConfig:
       repoRef:
         name: manifests
-        path: namespaces/base
-    name: namespaces
+        path: common/kubeflow-namespace/base
+    name: kubeflow-namespace
   - kustomizeConfig:
       repoRef:
         name: manifests
-        path: application/v3
-    name: application
+        path: common/kubeflow-roles/base
+    name: kubeflow-roles
   - kustomizeConfig:
       repoRef:
         name: manifests
-        path: stacks/aws/application/istio-1-3-1-stack
+        path: distributions/stacks/aws/application/istio-1-9-1-stack
     name: istio-stack
   - kustomizeConfig:
       repoRef:
         name: manifests
-        path: stacks/aws/application/cluster-local-gateway-1-3-1
-    name: cluster-local-gateway
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: istio/istio/base
-    name: istio
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: stacks/aws/application/cert-manager-crds
-    name: cert-manager-crds
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: stacks/aws/application/cert-manager-kube-system-resources
+        path: common/cert-manager/cert-manager-kube-system-resources/base
     name: cert-manager-kube-system-resources
   - kustomizeConfig:
       repoRef:
         name: manifests
-        path: stacks/aws/application/cert-manager
+        path: common/cert-manager/cert-manager-crds/base
+    name: cert-manager-crds
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: common/cert-manager/cert-manager/overlays/self-signed
     name: cert-manager
   - kustomizeConfig:
       repoRef:
         name: manifests
-        path: metacontroller/base
-    name: metacontroller
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: stacks/aws/application/oidc-authservice
-    name: oidc-authservice
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: stacks/aws/application/dex-auth
+        path: common/dex/overlays/istio
     name: dex
   - kustomizeConfig:
       repoRef:
         name: manifests
-        path: admission-webhook/bootstrap/overlays/application
-    name: bootstrap
+        path: common/oidc-authservice/base
+    name: oidc-authservice
   - kustomizeConfig:
       repoRef:
         name: manifests
-        path: spark/spark-operator/overlays/application
-    name: spark-operator
+        path: common/knative/knative-serving-crds/base
+    name: knative-serving-crds
   - kustomizeConfig:
       repoRef:
         name: manifests
-        path: stacks/aws
-    name: kubeflow-apps
+        path: common/knative/knative-serving-install/base
+    name: knative-serving-install
   - kustomizeConfig:
       repoRef:
         name: manifests
-        path: aws/istio-ingress/base_v3
-    name: istio-ingress
+        path: common/knative/knative-eventing-crds/base
+    name: knative-eventing-crds
   - kustomizeConfig:
       repoRef:
         name: manifests
-        path: knative/installs/generic
-    name: knative
+        path: common/knative/knative-eventing-install/base
+    name: knative-eventing-install
   - kustomizeConfig:
       repoRef:
         name: manifests
-        path: kfserving/installs/generic
+        path: common/istio-1-9-0/cluster-local-gateway/base
+    name: cluster-local-gateway
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: common/istio-1-9-0/kubeflow-istio-resources/base
+    name: kubeflow-istio-resources
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: apps/pipeline/upstream/env/platform-agnostic-multi-user
+    name: kubeflow-pipelines
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: apps/kfserving/upstream/overlays/kubeflow
     name: kfserving
   - kustomizeConfig:
       repoRef:
         name: manifests
-        path: stacks/aws/application/spartakus
-    name: spartakus
-  plugins:
-  - kind: KfAwsPlugin
-    metadata:
-      name: aws
-    spec:
-      auth:
-        basicAuth:
-          password: 12341234
-          username: admin@kubeflow.org
-      region: us-west-2
-      enablePodIamPolicy: true
-      # If you don't use IAM Role for Service Account, you can still use node instance roles.
-      #roles:
-      #- eksctl-kubeflow-aws-nodegroup-ng-a2-NodeInstanceRole-xxxxxxx
+        path: apps/centraldashboard/upstream/overlays/istio
+    name: central-dashboard
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/aws/application/notebooks
+    name: notebooks
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: apps/profiles/upstream/overlays/kubeflow
+    name: profiles
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: apps/volumes-web-app/upstream/overlays/istio
+    name: volumes-web-app
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: distributions/stacks/aws/application/tensorboard
+    name: tensorboard
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: apps/tf-training/upstream/overlays/kubeflow
+    name: tfjob-operator
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: apps/pytorch-job/upstream/overlays/kubeflow
+    name: pytorch-operator
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: apps/mpi-job/upstream/overlays/kubeflow
+    name: mpi-operator
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: apps/mxnet-job/upstream/overlays/kubeflow
+    name: mxnet-operator
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: apps/xgboost-job/upstream/overlays/kubeflow
+    name: xgboost-operator
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: common/user-namespace/base
+    name: user-namespace
   repos:
   - name: manifests
     uri: https://github.com/kubeflow/manifests/archive/master.tar.gz
