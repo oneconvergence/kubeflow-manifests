@@ -35,7 +35,7 @@ resources:
 # Katib
 - ../apps/katib/upstream/installs/katib-with-kubeflow
 # Central Dashboard
-- ../apps/centraldashboard/upstream/overlays/istio
+# - ../apps/centraldashboard/upstream/overlays/istio
 # Admission Webhook
 - ../apps/admission-webhook/upstream/overlays/cert-manager
 # Notebook Controller
@@ -63,3 +63,6 @@ resources:
 
 # User namespace
 - ../common/user-namespace/base
+
+patchesStrategicMerge:
+- patches/istio-proxy-service.yaml
