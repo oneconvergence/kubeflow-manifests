@@ -13,7 +13,7 @@ resources:
 # OIDC Authservice
 #- ../common/oidc-authservice/base
 # Dex
-- ../common/dex/overlays/istio
+#- ../common/dex/overlays/istio
 # KNative
 - ../common/knative/knative-serving-crds/base
 - ../common/knative/knative-serving-install/base

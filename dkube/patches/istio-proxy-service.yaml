@@ -9,3 +9,5 @@ spec:
     - name: http
       nodePort: 32222
       port: 80
+      targetPort: 8080
+      protocol: TCP
