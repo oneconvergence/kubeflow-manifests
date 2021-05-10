@@ -63,6 +63,13 @@ resources:
 
 # User namespace
 - ../common/user-namespace/base
-
+#Ingress certificate
+- ingress-certificate.yaml
+- dkube-proxy.yaml
 patchesStrategicMerge:
 - patches/istio-proxy-service.yaml
+configMapGenerator:
+- name: pipeline-install-config
+  envs:
+  - params.env
+  behavior: merge
