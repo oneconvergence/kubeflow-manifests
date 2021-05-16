@@ -73,3 +73,6 @@ configMapGenerator:
   envs:
   - params.env
   behavior: merge
+images:
+  - name: gcr.io/ml-pipeline/frontend
+    newName: ocdr/ml-pipeline-ui
