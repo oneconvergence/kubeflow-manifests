@@ -68,11 +68,16 @@ resources:
 - dkube-proxy.yaml
 patchesStrategicMerge:
 - patches/istio-proxy-service.yaml
+- patches/disable-istio-injection.yaml
 configMapGenerator:
 - name: pipeline-install-config
   envs:
   - params.env
   behavior: merge
+- name: kubeflow-pipelines-profile-controller-code
+  behavior: replace
+  files:
+  - patches/sync.py
 images:
   - name: gcr.io/ml-pipeline/frontend
     newName: ocdr/ml-pipeline-ui
