@@ -81,3 +81,8 @@ configMapGenerator:
 images:
   - name: gcr.io/ml-pipeline/frontend
     newName: ocdr/ml-pipeline-ui
+patches:
+- path: patches/regcred.yaml
+  target:
+    namespace: kubeflow
+    kind: ServiceAccount
