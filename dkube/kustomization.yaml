@@ -71,7 +71,7 @@ resources:
 
 patchesStrategicMerge:
 - patches/istio-proxy-service.yaml
-- patches/disable-istio-injection.yaml
+#- patches/disable-istio-injection.yaml
 - patches/katib-external-mysql.yaml
 - patches/pipeline-external-mysql.yaml
 - patches/metadata-external-mysql.yaml
