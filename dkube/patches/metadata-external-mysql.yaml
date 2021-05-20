@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metadata-db
+  namespace: kubeflow
+$patch: delete
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: metadata-mysql
+  namespace: kubeflow
+$patch: delete
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    component: db
+    kustomize.component: metadata
+  name: metadata-db
+  namespace: kubeflow
+spec:
+  externalName: metadata-cluster-mysql-master.dkube-infra.svc.cluster.local
+  ports:
+  - name: dbapi
+    port: 3306
+    protocol: TCP
+    targetPort: 3306
+  sessionAffinity: None
+  type: ExternalName
