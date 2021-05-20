@@ -29,7 +29,7 @@ resources:
 
 
 # Kubeflow Pipelines
-- ../apps/pipeline/upstream/env/platform-agnostic-multi-user
+- ../apps/pipeline/upstream/env/platform-agnostic-multi-user-legacy
 # KFServing
 - ../apps/kfserving/upstream/overlays/kubeflow
 # Katib
@@ -63,24 +63,35 @@ resources:
 
 # User namespace
 - ../common/user-namespace/base
+
+
 #Ingress certificate
 - ingress-certificate.yaml
 - dkube-proxy.yaml
+
 patchesStrategicMerge:
 - patches/istio-proxy-service.yaml
 - patches/disable-istio-injection.yaml
+- patches/katib-external-mysql.yaml
+- patches/pipeline-external-mysql.yaml
+- patches/metadata-external-mysql.yaml
+
 configMapGenerator:
-- name: pipeline-install-config
-  envs:
-  - params.env
-  behavior: merge
 - name: kubeflow-pipelines-profile-controller-code
   behavior: replace
   files:
   - patches/sync.py
+
+secretGenerator:
+  - name: katib-mysql-secrets
+    behavior: replace
+    envs:
+      - secrets.env
+
 images:
   - name: gcr.io/ml-pipeline/frontend
     newName: ocdr/ml-pipeline-ui
+
 patches:
 - path: patches/regcred.yaml
   target:
