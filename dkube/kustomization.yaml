@@ -71,16 +71,16 @@ resources:
 
 patchesStrategicMerge:
 - patches/istio-proxy-service.yaml
-#- patches/disable-istio-injection.yaml
 - patches/katib-external-mysql.yaml
 - patches/pipeline-external-mysql.yaml
 - patches/metadata-external-mysql.yaml
+- patches/pipeline-config.yaml
 
-configMapGenerator:
-- name: kubeflow-pipelines-profile-controller-code
-  behavior: replace
-  files:
-  - patches/sync.py
+#configMapGenerator:
+#- name: kubeflow-pipelines-profile-controller-code
+#  behavior: replace
+#  files:
+#  - patches/sync.py
 
 secretGenerator:
   - name: katib-mysql-secrets
