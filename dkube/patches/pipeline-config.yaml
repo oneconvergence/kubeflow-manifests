@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: pipeline-api-server-config
-  namespace: kubeflow
-data:
-  MULTIUSER_SHARED_READ: "true"
