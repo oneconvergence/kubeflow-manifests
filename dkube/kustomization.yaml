@@ -62,7 +62,7 @@ resources:
 - ../apps/xgboost-job/upstream/overlays/kubeflow
 
 # User namespace
-- ../common/user-namespace/base
+#- ../common/user-namespace/base
 
 
 #Ingress certificate
@@ -76,7 +76,6 @@ patchesStrategicMerge:
 - patches/metadata-external-mysql.yaml
 - patches/pipeline.yaml
 - patches/serving.yaml
-- patches/profile.yaml
 
 #configMapGenerator:
 #- name: kubeflow-pipelines-profile-controller-code
