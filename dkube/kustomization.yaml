@@ -74,8 +74,9 @@ patchesStrategicMerge:
 - patches/katib-external-mysql.yaml
 - patches/pipeline-external-mysql.yaml
 - patches/metadata-external-mysql.yaml
-- patches/pipeline-config.yaml
-#- patches/kubeflow-gateway.yaml
+- patches/pipeline.yaml
+- patches/serving.yaml
+- patches/profile.yaml
 
 #configMapGenerator:
 #- name: kubeflow-pipelines-profile-controller-code

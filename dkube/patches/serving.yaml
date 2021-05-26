@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-domain
+  namespace: knative-serving
+data:
+    dkube.ai: ""
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-deployment
+  namespace: knative-serving
+data:
+  registriesSkippingTagResolving: "index.docker.io"
+  progressDeadline: "10m"
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: webhook
+  namespace: knative-serving
+spec:
+  template:
+    spec:
+      containers:
+        - name: webhook
+          env:
+            - name: "WEBHOOK_PORT"
+              value: 8443
