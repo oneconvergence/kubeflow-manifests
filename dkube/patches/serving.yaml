@@ -27,4 +27,4 @@ spec:
         - name: webhook
           env:
             - name: "WEBHOOK_PORT"
-              value: 8443
+              value: "8443"
