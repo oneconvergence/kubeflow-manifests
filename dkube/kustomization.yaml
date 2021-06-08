@@ -66,7 +66,7 @@ resources:
 
 
 #Ingress certificate
-- ingress-certificate.yaml
+#- ingress-certificate.yaml
 - dkube-proxy.yaml
 
 patchesStrategicMerge:
@@ -76,6 +76,7 @@ patchesStrategicMerge:
 - patches/metadata-external-mysql.yaml
 - patches/pipeline.yaml
 - patches/serving.yaml
+- patches/workflow-ttl.yaml
 
 #configMapGenerator:
 #- name: kubeflow-pipelines-profile-controller-code
