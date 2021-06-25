@@ -78,11 +78,15 @@ patchesStrategicMerge:
 - patches/serving.yaml
 - patches/workflow-ttl.yaml
 
-#configMapGenerator:
-#- name: kubeflow-pipelines-profile-controller-code
-#  behavior: replace
-#  files:
-#  - patches/sync.py
+configMapGenerator:
+- name: kubeflow-pipelines-profile-controller-code
+  behavior: replace
+  files:
+  - patches/sync.py
+- name: kubeflow-pipelines-profile-controller-env
+  behavior: merge
+  literals:
+    - DISABLE_ISTIO_SIDECAR=true
 
 secretGenerator:
   - name: katib-mysql-secrets
