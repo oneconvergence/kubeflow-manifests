@@ -100,3 +100,19 @@ patches:
   target:
     namespace: kubeflow
     kind: ServiceAccount
+- path: patches/regcred.yaml
+  target:
+    namespace: istio-system
+    kind: ServiceAccount
+- path: patches/regcred.yaml
+  target:
+    namespace: cert-manager
+    kind: ServiceAccount
+- path: patches/regcred.yaml
+  target:
+    namespace: knative-serving
+    kind: ServiceAccount
+- path: patches/regcred.yaml
+  target:
+    namespace: knative-eventing
+    kind: ServiceAccount
