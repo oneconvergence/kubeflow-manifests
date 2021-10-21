@@ -1,3 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    component: db
+    kustomize.component: metadata
+  name: metadata-db
+  namespace: kubeflow
+spec:
+  externalName: metadata-cluster-mysql-master.dkube-infra.svc.cluster.local
+  ports:
+  - name: dbapi
+    port: 3306
+    protocol: TCP
+    targetPort: 3306
+  sessionAffinity: None
+  type: ExternalName
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,7 +32,7 @@ spec:
           - configMapRef:
               name: metadata-grpc-configmap
           args: ["--grpc_port=$(METADATA_GRPC_SERVICE_PORT)",
-                 "--mysql_config_host=metadata-cluster-mysql-master.dkube-infra.svc.cluster.local",
+                 "--mysql_config_host=metadata-db",
                  "--mysql_config_database=metadb",
                  "--mysql_config_port=3306",
                  "--mysql_config_user=root",

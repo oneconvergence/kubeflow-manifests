@@ -87,8 +87,6 @@ secretGenerator:
 images:
   - name: gcr.io/ml-pipeline/frontend
     newName: ocdr/ml-pipeline-ui
-  - name: mpioperator/mpi-operator
-    newName: ocdr/mpi-operator
 
 patches:
 - path: patches/regcred.yaml
