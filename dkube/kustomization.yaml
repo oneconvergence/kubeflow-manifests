@@ -66,6 +66,7 @@ patchesStrategicMerge:
 - patches/metadata-external-mysql.yaml
 - patches/pipeline.yaml
 - patches/serving.yaml
+- patches/training-operator-limits.yaml
 #- patches/workflow-ttl.yaml
 
 configMapGenerator:
