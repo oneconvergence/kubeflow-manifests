@@ -90,6 +90,8 @@ images:
     newName: ocdr/ml-pipeline-ui
   - name: docker.io/kubeflowkatib/katib-ui
     newName: docker.io/ocdr/katib-ui
+  - name: kfserving/models-web-app
+    newName: ocdr/models-web-app
 
 patches:
 - path: patches/regcred.yaml
