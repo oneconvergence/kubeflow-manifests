@@ -58,6 +58,7 @@ resources:
 #Ingress certificate
 #- ingress-certificate.yaml
 - dkube-proxy.yaml
+- kfserv-ui.yaml
 
 patchesStrategicMerge:
 - patches/istio-proxy-service.yaml
