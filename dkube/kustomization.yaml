@@ -68,6 +68,7 @@ patchesStrategicMerge:
 - patches/pipeline.yaml
 - patches/serving.yaml
 - patches/training-operator-limits.yaml
+- patches/cache-server-mysql-secret.yaml
 #- patches/workflow-ttl.yaml
 
 configMapGenerator:
@@ -115,3 +116,4 @@ patches:
   target:
     namespace: knative-eventing
     kind: ServiceAccount
+

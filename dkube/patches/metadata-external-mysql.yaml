@@ -12,6 +12,16 @@ spec:
           - $patch: replace
           - name: MYSQL_ALLOW_EMPTY_PASSWORD
             value: "true"
+          - name: DBCONFIG_USER
+            valueFrom:
+                secretKeyRef:
+                  name: katib-mysql-secrets
+                  key: DBCONFIG_USER
+          - name : DBCONFIG_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-db-pxc-db
+                key: root
           envFrom:
           - configMapRef:
               name: metadata-grpc-configmap
@@ -19,5 +29,5 @@ spec:
                  "--mysql_config_host=metadata-db",
                  "--mysql_config_database=metadb",
                  "--mysql_config_port=3306",
-                 "--mysql_config_user=root",
-                 "--mysql_config_password=test"]
+                 "--mysql_config_user=$(DBCONFIG_USER)",
+                 "--mysql_config_password=$(DBCONFIG_PASSWORD)"]
