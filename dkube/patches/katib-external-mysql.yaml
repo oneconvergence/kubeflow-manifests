@@ -36,12 +36,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: katib-mysql-secrets
-                  key: DB_USER
+                  key: DBCONFIG_USER
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: katib-mysql-secrets
-                  key: DB_PASSWORD
+                  name: mysql-db-pxc-db
+                  key: root
             - name: KATIB_MYSQL_DB_DATABASE
               valueFrom:
                 secretKeyRef:
