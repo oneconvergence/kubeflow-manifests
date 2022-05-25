@@ -93,6 +93,24 @@ class Controller(BaseHTTPRequestHandler):
                                 "gcr.io/ml-pipeline/frontend:" + kfp_version,
                                 "imagePullPolicy":
                                 "IfNotPresent",
+                                "env": [{
+                                        "name": "MINIO_ACCESS_KEY",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "accesskey",
+                                                "name": "mlpipeline-minio-artifact"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "MINIO_SECRET_KEY",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "secretkey",
+                                                "name": "mlpipeline-minio-artifact"
+                                            }
+                                        }
+                                }],
                                 "ports": [{
                                     "containerPort": 3000
                                 }],

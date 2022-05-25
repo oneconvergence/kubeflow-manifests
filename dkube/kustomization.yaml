@@ -69,6 +69,7 @@ patchesStrategicMerge:
 - patches/serving.yaml
 - patches/training-operator-limits.yaml
 - patches/cache-server-mysql-secret.yaml
+- patches/mlpipeline-minio.yaml
 #- patches/workflow-ttl.yaml
 
 configMapGenerator:
