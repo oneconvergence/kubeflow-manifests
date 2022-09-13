@@ -26,13 +26,6 @@ metadata:
   namespace: kubeflow
 $patch: delete
 ---
-apiVersion: v1
-kind: Secret
-metadata:
-  name: mysql-secret
-  namespace: kubeflow
-$patch: delete
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -47,10 +40,20 @@ spec:
             - name: DBCONFIG_USER
               valueFrom:
                 secretKeyRef:
-                  name: katib-mysql-secrets
+                  name: mysql-secret
                   key: DBCONFIG_USER
             - name: DBCONFIG_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mysql-db-pxc-db
-                  key: root
+                  name: mysql-secret
+                  key: DBCONFIG_PASSWORD
+            - name: DBCONFIG_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: DBCONFIG_HOST
+                  name: mysql-secret
+            - name: DBCONFIG_PORT
+              valueFrom:
+                secretKeyRef:
+                  key: DBCONFIG_PORT
+                  name: mysql-secret

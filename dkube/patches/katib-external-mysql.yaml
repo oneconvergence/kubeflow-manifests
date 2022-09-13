@@ -19,6 +19,13 @@ metadata:
   namespace: kubeflow
 $patch: delete
 ---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: katib-mysql-secrets
+  namespace: kubeflow
+$patch: delete
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -35,25 +42,25 @@ spec:
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: katib-mysql-secrets
+                  name: mysql-secret
                   key: DBCONFIG_USER
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mysql-db-pxc-db
-                  key: root
+                  name: mysql-secret
+                  key: DBCONFIG_PASSWORD
             - name: KATIB_MYSQL_DB_DATABASE
               valueFrom:
                 secretKeyRef:
-                  name: katib-mysql-secrets
+                  name: mysql-secret
                   key: KATIB_MYSQL_DB_DATABASE
             - name: KATIB_MYSQL_DB_HOST
               valueFrom:
                 secretKeyRef:
-                  name: katib-mysql-secrets
-                  key: KATIB_MYSQL_DB_HOST
+                  name: mysql-secret
+                  key: DBCONFIG_HOST
             - name: KATIB_MYSQL_DB_PORT
               valueFrom:
                 secretKeyRef:
-                  name: katib-mysql-secrets
-                  key: KATIB_MYSQL_DB_PORT
+                  name: mysql-secret
+                  key: DBCONFIG_PORT
