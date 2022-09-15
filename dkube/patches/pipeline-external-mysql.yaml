@@ -50,10 +50,10 @@ spec:
             - name: DBCONFIG_HOST
               valueFrom:
                 secretKeyRef:
-                  key: DBCONFIG_HOST
                   name: mysql-secret
+                  key: DBCONFIG_HOST
             - name: DBCONFIG_PORT
               valueFrom:
                 secretKeyRef:
-                  key: DBCONFIG_PORT
                   name: mysql-secret
+                  key: DBCONFIG_PORT
