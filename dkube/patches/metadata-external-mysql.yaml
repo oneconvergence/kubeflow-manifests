@@ -21,7 +21,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: mysql-secret
-                key: DBCONFIG_USER
+                key: DBCONFIG_PASSWORD
           - name: DBCONFIG_HOST
             valueFrom:
               secretKeyRef:
