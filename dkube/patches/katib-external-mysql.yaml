@@ -19,13 +19,6 @@ metadata:
   namespace: kubeflow
 $patch: delete
 ---
-apiVersion: v1
-kind: Secret
-metadata:
-  name: katib-mysql-secrets
-  namespace: kubeflow
-$patch: delete
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -52,7 +45,7 @@ spec:
             - name: KATIB_MYSQL_DB_DATABASE
               valueFrom:
                 secretKeyRef:
-                  name: mysql-secret
+                  name: katib-mysql-secrets
                   key: KATIB_MYSQL_DB_DATABASE
             - name: KATIB_MYSQL_DB_HOST
               valueFrom:

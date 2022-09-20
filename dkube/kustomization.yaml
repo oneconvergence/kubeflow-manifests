@@ -83,7 +83,7 @@ configMapGenerator:
     - DISABLE_ISTIO_SIDECAR=true
 
 secretGenerator:
-  - name: mysql-secret
+  - name: katib-mysql-secrets
     behavior: replace
     envs:
       - secrets.env
